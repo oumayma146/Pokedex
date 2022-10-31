@@ -63,7 +63,7 @@ export function fetchPokemons(next){
       const pokemonsArray = [];
       for await (const pokemon of result.results) {
         const pokemonDetailsResponse = await fetch(pokemon.url);
-        // console.log(pokemon.url,'-----detail')
+   
         const pokemonDetails = await pokemonDetailsResponse.json()
 
         pokemonsArray.push({
@@ -82,12 +82,12 @@ export function fetchPokemons(next){
         });
       }
 
-      // console.log(pokemonsArray[0].stats[0])
+     
       await dispatch(addPokemons(pokemonsArray))
       await dispatch(setNext(result.next))
       dispatch(setLoading(false))
     } catch (error) {
-      console.log(error,'\n---ERROR FETCH POKEMON---')
+    
       dispatch(setLoading(false))
     }
   }
